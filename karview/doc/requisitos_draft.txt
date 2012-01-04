@@ -1,0 +1,41 @@
+ REQUISITOS 
+(enunciados)
+
+Definición y Creación de Roles
+*Bloquear/desbloquear vehículo
+Configuración de Alerta por exceso de velocidad
+Creación / Modificación / Visualización de Geocercas
+Creación/Modificación/Activación/Desactivación de Datos de Vehiculos
+Envio de notificaciones (velocidad, geocerca, revisión, etc)
+Envío de avisos al usuario por parte del administrador
+Exportar informes a formatos conocidos
+Gestión de Datos de Usuario (Modificar - Desactivar/Activar )
+Localización del vehículo en momento actual (calles - mapa)
+Modificación/Recuperación de Clave
+Monitorización de equipos-vehiculos conectados
+Registro de Datos de Usuario (crear)
+Registro / Modificación de Información de Instalación vinculada a un Vehículo
+Registrar el acceso al sistema de un usuario
+Registro de fecha para próxima revisión del vehículo.
+Registro de Información de Instalación por cada vehículo
+Registro de Información sobre la revisión realizada al vehiculo
+Registro/Modificación de ubicación de vivienda del usuario en el mapa
+Registro de bloqueos y desbloqueos realizados tanto de seguros y de Vehículo
+*Solicitar bloqueo de vehículo
+*Solicitar bloqueo/desbloqueo de seguros
+Vincular vehículo a determinado usuario(s)
+Visualización de ubicación de vivienda del usuario en el mapa
+Visualización de Vehículos relacionados con el usuario en el mapa
+Visualización de Información sobre kilometraje del vehículo
+Visualización de Historial de Revisiones del vehiculo
+Visualización de Información de Instalación por cada vehículo
+Visualización de mapas 
+Visualización de usuarios del sistema y sus vehículos asociados
+Visualizar historico de accesos al sistema
+Visualizar las veces que se ha excedido el límite de velocidad
+Visualizar llamadas de pánico
+Visualizar paradas realizadas por el vehículo
+Visualizar ruta recorrida por un vehículo
+Visualizar tiempos de encendido y apagado de vehiculo
+Visualizar ultimos estados de los vehículos vinculados a un usuario
+Visualización de bloqueos y desbloqueos realizados tanto de seguros y de vehículo

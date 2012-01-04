@@ -33,7 +33,7 @@ Ext.onReady(function(){
         minListWidth:115,
         width:115,
         selectOnFocus:true,
-        labelStyle:'padding-left:8px;width:10px;'
+        labelStyle:'padding-left:35px;width:10px;'
     });
 
     //txtNombres
@@ -95,12 +95,12 @@ Ext.onReady(function(){
 
     //txtEmail
     var newUsEm = new Ext.form.TextField({
-        fieldLabel:'e-mail',
+        fieldLabel:'Email',
         name:'newUsEm',
         emptyText:'',
         id:"newUsEm",
-        width:150 ,
-        labelStyle:'padding-left:2px;'
+        width:100 ,
+        labelStyle:'padding-left:15px;width:10px;'
     });
 
     //txtFono1
@@ -110,7 +110,7 @@ Ext.onReady(function(){
         emptyText:'',
         id:"newUsFn1",
         width:150,
-        labelStyle:'padding-left:8px;width:10px;'
+        labelStyle:'padding-left:12px;width:10px;'
     });
 
     //txtFono2
@@ -131,7 +131,7 @@ Ext.onReady(function(){
         emptyText:'',
         id:"newUsUs",
         width:150,
-        labelStyle:'padding-left:8px;width:10px;'
+        labelStyle:'padding-left:12px;width:10px;'
     });
 
     //txtClave
@@ -163,7 +163,7 @@ Ext.onReady(function(){
     var newUsImg = new Ext.ux.form.FileUploadField({
         emptyText: 'Seleccione una imagen',
         fieldLabel: 'Fotogr',
-        width:220,
+        width:250,
         buttonText: 'Seleccionar',
         buttonConfig: {
             iconCls: 'upload-icon'
