@@ -1,0 +1,1 @@
+<?php    if (!isset($_SESSION)) {        session_start();    }    $dirP = "http://200.0.29.117:8080/karview/";    if (!isset($_SESSION["ID_USER"]) || !isset($_SESSION["USER"]) ||            !isset($_SESSION["SESION"]) || !isset($_SESSION["ROL"])) {        header("Location: $dirP");        exit();    }?>

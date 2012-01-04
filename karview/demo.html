@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Draw Feature Example</title>
+
+        <link rel="stylesheet" type="text/css" href="js/OpenLayer/theme/default/style.css"/>
+        <script language="javascript" type="text/javascript" src="js/OpenLayer/lib/OpenLayers.js"></script>
+
+        <link rel="stylesheet" href="style.css" type="text/css">
+
+        <style type="text/css">
+            #controlToggle li {
+                list-style: none;
+            }
+            p {
+                width: 512px;
+            }
+
+            /* avoid pink tiles */
+            .olImageLoadError {
+                background-color: transparent !important;
+            }
+        </style>
+        <script type="text/javascript">
+            var map, drawControls;
+            var polygonLayer;
+            
+            function init(){
+                map = new OpenLayers.Map('map');
+
+                var wmsLayer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+                "http://vmap0.tiles.osgeo.org/wms/vmap0?", {layers: 'basic'});
+
+                var pointLayer = new OpenLayers.Layer.Vector("Point Layer");
+                var lineLayer = new OpenLayers.Layer.Vector("Line Layer");
+                polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer");
+
+                map.addLayers([wmsLayer, pointLayer, lineLayer, polygonLayer]);
+                map.addControl(new OpenLayers.Control.LayerSwitcher());
+                map.addControl(new OpenLayers.Control.MousePosition());
+
+
+
+
+
+
+
+
+                drawControls = {
+                    polygon: new OpenLayers.Control.DrawFeature(
+                    polygonLayer,
+                    OpenLayers.Handler.Polygon,
+                    {'featureAdded': funcion1})
+                };
+
+                for(var key in drawControls) {
+                    var auxControl = drawControls[key];
+                    map.addControl(auxControl);
+                }
+
+
+
+
+
+
+
+
+                map.setCenter(new OpenLayers.LonLat(0, 0), 3);
+            }
+
+            /**
+             * Extrae todos los vértices de
+             * un polígono una vez que ha sido dibujado.
+             * 
+             */
+            function funcion1(fig) {
+                var geom = fig.geometry;
+                console.warn(geom.toString());
+                console.warn(geom.getGeodesicArea());
+                var vert = geom.getVertices();  //todos los vértices                                
+            }
+
+            /**
+             * Teniendo un conjunto de puntos
+             * crear un polígono.
+             */
+            function function2() {
+                var cord = [9.66796875, 17.75390625, 20.390625, 18.10546875, 19.86328125, 8.96484375, 5.44921875, 9.140625, 9.66796875, 17.75390625];
+                var site_points = new Array();
+
+                for(var i=0; i<8; i = i+2){ 
+                    var point = new OpenLayers.Geometry.Point(cord[i], cord[i+1]);
+                    site_points.push(point);
+                }
+
+                site_points.push(site_points[0]);
+                
+                var linear_ring = new OpenLayers.Geometry.LinearRing(site_points);
+                var polygonFeature = new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.Polygon([linear_ring]), null, null);
+                
+                polygonLayer.addFeatures([polygonFeature]);
+            }
+
+
+
+            function toggleControl(element) {               
+                for(var key in drawControls) {
+                    var control = drawControls[key];
+                    if(element.value == key && element.checked) {
+                        control.activate();
+                    } else {
+                        control.deactivate();
+                    }
+                }
+            }
+
+        </script>
+    </head>
+    <body onload="init()">
+
+        <div id="map" class="smallmap"></div>
+
+        <ul id="controlToggle">
+            <li>
+                <input type="radio" name="type" value="polygon" id="polygonToggle" onclick="toggleControl(this);" />
+                <label for="polygonToggle">draw polygon</label>
+                <input type="radio" name="type" value="a" id="w" onclick="function2();" />
+                <label for="polygonToggle">add polygon</label>
+            </li>
+        </ul>
+    </body>
+</html>

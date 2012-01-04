@@ -1,0 +1,24 @@
+/**
+ * CSS Reset
+ * From Blueprint reset.css
+ * http://blueprintcss.googlecode.com
+ */
+
+ /*Hacer que el mapa ocupe el 100% de la pantalla*/
+html,body{
+	margin:0px;
+	height:100%;
+	width: 100%;
+	overflow: hidden;	/*Ocultar las barras de scroll*/
+}
+
+/**
+ * Map Examples Specific
+ */
+#map {
+	height: 100%;
+	width: 100%;
+	/*height: 800px;
+	width: 600px;*/
+	border: 1px solid black;
+}
