@@ -1,10 +1,10 @@
 <?php
 
 include ('../../dll/conect.php');
+require_once ('encript.php');
 extract($_POST);
 
-$salt = "gEnErIcApP";
-$encriptClave = md5(md5(md5($ps) . md5($salt)));
+$encriptClave = encryptClave($ps);
 $consultaSql = " SELECT ID_PER, USUARIO, CLAVE, ID_ROL FROM " .
         " PERSONAS WHERE USUARIO = '" . $us .
         "' AND CLAVE = '" . $encriptClave . "' AND ESTADO = 1";
