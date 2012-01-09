@@ -463,10 +463,8 @@ function delVehic(idVhEqp) {
                                 msg: 'Vehiculo Eliminado',
                                 buttons: Ext.MessageBox.OK,
                                 icon: Ext.MessageBox.OK
-                            });
-                            
+                            });                           
                         }
-
                     },
                     failure: function(){
                         Ext.MessageBox.hide();
@@ -481,8 +479,5 @@ function delVehic(idVhEqp) {
 
 
             }
-        });
-
-
-   
+        });  
 }

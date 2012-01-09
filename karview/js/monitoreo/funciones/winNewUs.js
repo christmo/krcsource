@@ -383,6 +383,8 @@ function check_cedula( cedula )
 /* oculta la venta y limpia los datos no guardados */
 function newUsClean(){
 
+console.warn(rolStore.getTotalCount());
+
     newUsCntdWin.getForm().reset();
     if (newUsWin != null) {
         newUsWin.hide();
@@ -393,8 +395,10 @@ function newUsClean(){
 function newUsWindow(){
 
     if(!newUsWin){
+console.warn(rolStore.getTotalCount());
         // la ventana se crea una sola vez
         rolStore.load();
+
         newUsWin = new Ext.Window({
             layout:'fit',
             title:'Nuevo Usuario',
