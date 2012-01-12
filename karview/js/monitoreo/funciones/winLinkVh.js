@@ -8,7 +8,7 @@ var linkVhUsersAct;
 
 Ext.onReady(function(){
 
-    //Store de Propietarios
+    //Store de Vehiculos
     linkVhec = new Ext.data.JsonStore({
         url: 'php/combos/vehicList.php',
         root: 'p',
