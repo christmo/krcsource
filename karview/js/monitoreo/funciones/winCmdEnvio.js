@@ -26,8 +26,9 @@ Ext.onReady(function(){
 
     //txt Comando
     var cmdEnvText = new Ext.form.TextField({
-        fieldLabel:'Comando',
+        fieldLabel:'Manual',
         allowBlank:false,
+        disabled: true,
         name:'cmdEnvTxt',
         emptyText:'',
         id:"cmdEnvTxt",
@@ -35,7 +36,78 @@ Ext.onReady(function(){
         minLength:3,
         minLengthText:"Comando inválido"
     });
-   
+
+    // store comandos predefinidos
+    var strCmdPredef;
+    strCmdPredef = new Ext.data.JsonStore({
+        url:'php/combos/cmdPredf.php',
+        root: 'p',
+        fields: [{
+            name:'id'
+        },{
+            name:'name'
+        }]
+    });
+    strCmdPredef.load();
+
+
+    //Lista de Comandos Predefinidos
+    var cmdEnvPredef = new Ext.form.ComboBox({
+        fieldLabel: 'Predf ',
+        store: strCmdPredef,
+        hiddenName: 'idCmd',
+        valueField: 'id',
+        displayField: 'name',
+        typeAhead: true,
+        disabled: false,
+        mode: 'local',
+        triggerAction: 'all',
+        emptyText:'Comando...',
+        allowBlank:false,
+        resizable:true,
+        width:200,
+        selectOnFocus:true,
+        labelStyle:'padding-left:width:10px;'
+    });
+    
+
+    var rbTipoCmd = new Ext.form.RadioGroup({
+        fieldLabel: 'Tipo CMD',
+        columns: 2,
+        defaultType: 'radio',
+        items: [
+        {
+            boxLabel: 'Manual',
+            name: 'groupBtn',
+            inputValue: 'cc',            
+            listeners: {
+                check: function (ctl, val) {
+                    if (val) {
+                        cmdEnvPredef.setDisabled(true);
+                        cmdEnvText.setDisabled(false);
+                    }
+                }
+            }
+        },
+        {
+            boxLabel: 'Predefinido',
+            name: 'groupBtn',
+            inputValue: 'bb',
+            checked: true,
+            listeners: {
+                check: function (ctl, val) {
+                    if (val) {
+                        cmdEnvPredef.setDisabled(false);
+                        cmdEnvText.setDisabled(true);
+                    }
+                }
+            }
+        }
+        ]
+    });
+
+
+    
 
     //Panel Contenedor Principal
     cmdEnvCntdWin = new Ext.FormPanel({
@@ -44,12 +116,10 @@ Ext.onReady(function(){
         bodyStyle:'padding:5px 5px 0',
         labelWidth:60,
         width: 320,
-        items: [cmdEnvVhLst,cmdEnvText],
+        items: [cmdEnvVhLst,rbTipoCmd,cmdEnvPredef,cmdEnvText],
         buttons: [ {
             text: 'Enviar',
             handler: function(){
-
-                console.warn("enviando ");
 
                 Ext.MessageBox.confirm('Confirmar', 'Se va a enviar el CMD al equipo?',
                     function(opt){
@@ -118,7 +188,7 @@ function cmdEnvWindow(){
             title:'Enviar Comando',
             resizable : false,
             width:320,
-            height:150,
+            height:250,
             modal:true,
             closeAction:'hide',
             plain: true,
